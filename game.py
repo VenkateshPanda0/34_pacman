@@ -204,8 +204,11 @@ class Game:
     def update(self, dt):
         if self.state != "play":
             return
-        self.clock_time += dt
-        self.fright_left = max(0.0, self.fright_left - dt)
+            self.clock_time += dt
+            self.message_timer = max(0.0, self.message_timer - dt)
+
+        if self.message_timer == 0:
+            self.message = ""
         threshold = bonus_life_threshold()
         if threshold and self.score // threshold > self.bonus_awarded:
             self.bonus_awarded = self.score // threshold

@@ -179,7 +179,11 @@ class Game:
             for ghost in self.ghosts:
                 if not ghost.eaten:
                     ghost.reverse()
-        on_pellet_eaten(self.score, len(self.pellets))
+       message = on_pellet_eaten(self.score, len(self.pellets))
+
+        if message:
+            self.message = message
+            self.message_timer = 2.0
         if not self.pellets:
             self.state = "win"
 

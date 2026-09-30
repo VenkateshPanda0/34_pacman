@@ -138,6 +138,8 @@ class Game:
         self.pellets = {(r, c) for r, line in enumerate(MAZE) for c, v in enumerate(line) if v in ".o"}
         self.player, self.direction, self.desired = list(PLAYER_START), (0, 1), (0, 1)
         self.score, self.lives, self.state = 0, 3, "play"
+        self.message = ""
+        self.message_timer = 0.0
         self.bonus_awarded = 0
         self.clock_time = self.fright_left = self.player_acc = self.ghost_acc = 0.0
         for ghost in self.ghosts:

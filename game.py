@@ -265,6 +265,12 @@ class Game:
                 pygame.draw.circle(screen, (255, 255, 255), (gx + 4, gy - 4), 3)
         hud = font.render(f"Score {self.score}   Lives {self.lives}   R = reset", True, (240, 240, 240))
         screen.blit(hud, (8, ROWS * TILE + 6))
+        if self.message:
+            message_surface = font.render(self.message, True, (255, 255, 0))
+        screen.blit(
+        message_surface,
+        message_surface.get_rect(center=(W // 2, 20))
+    )
         if self.state != "play":
             text = "YOU WIN! Press R" if self.state == "win" else "GAME OVER - Press R"
             label = font.render(text, True, (255, 255, 120))

@@ -1,3 +1,7 @@
+**Venkatesh Panda
+PES1UG24CS524**
+
+
 # Pac-Man Repair Lab
 
 This project is a single-file Pac-Man-lite clone using **Pygame**. It introduces students to grid movement, pellet collection, and ghost AI targeting rules using a small, readable object-oriented codebase.

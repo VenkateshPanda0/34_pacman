@@ -43,7 +43,6 @@ def ghost_color(name, mode):
     return None
 
 
-
 def on_pellet_eaten(score, pellets_left):
     """Return a message when the player reaches a pellet milestone."""
     if pellets_left == 10:
@@ -179,7 +178,7 @@ class Game:
             for ghost in self.ghosts:
                 if not ghost.eaten:
                     ghost.reverse()
-       message = on_pellet_eaten(self.score, len(self.pellets))
+        message = on_pellet_eaten(self.score, len(self.pellets))
 
         if message:
             self.message = message
@@ -204,8 +203,9 @@ class Game:
     def update(self, dt):
         if self.state != "play":
             return
-            self.clock_time += dt
-            self.message_timer = max(0.0, self.message_timer - dt)
+        self.clock_time += dt
+        self.fright_left = max(0.0, self.fright_left - dt)
+        self.message_timer = max(0.0, self.message_timer - dt)
 
         if self.message_timer == 0:
             self.message = ""
@@ -267,14 +267,7 @@ class Game:
         screen.blit(hud, (8, ROWS * TILE + 6))
         if self.message:
             message_surface = font.render(self.message, True, (255, 255, 0))
-        screen.blit(
-        message_surface,
-        message_surface.get_rect(center=(W // 2, 20))
-    )
-        if self.state != "play":
-            text = "YOU WIN! Press R" if self.state == "win" else "GAME OVER - Press R"
-            label = font.render(text, True, (255, 255, 120))
-            screen.blit(label, label.get_rect(center=(W // 2, H // 2)))
+            screen.blit(message_surface, message_surface.get_rect(center=(W // 2, ROWS * TILE + 20)))
 
 
 def main():

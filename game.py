@@ -45,8 +45,12 @@ def ghost_color(name, mode):
 
 
 def on_pellet_eaten(score, pellets_left):
-    """Called after every pellet is eaten; add sound, flashes, or bonus fruit here."""
-    pass
+    """Return a message when the player reaches a pellet milestone."""
+    if pellets_left == 10:
+        return "10 PELLETS LEFT!"
+    elif pellets_left == 0:
+        return "MAZE CLEARED!"
+    return None
 
 
 def bonus_life_threshold():
